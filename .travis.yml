@@ -8,7 +8,7 @@ env:
     secure: Q7T0EgmXLEToWaw/XDsJhfJaSPkmrWkDaKqxN7Atr0hBhY4s8SFbguucSVTt5l9lKtQa8g8uS24vdfd7UNQKnlHRMFxWYXYnGFSgtl0llaEtKYR3sGVw/87ViTInqOF2KWwZ3gyYe9/Bs7IjGKns4LUxSQdpcclGoNS0OuajB/ubINvZJMqAua3ZDJ6QDRnfbLr1sOI1rUtcfiffoqWS/uWcdpkROJKeG+I516Qb4f8mp5/Vyoa8/k+xgAq+6jyFCzeL2pTEnJuv5hitiLdTccptGbTaaQDbzqtz53boAoYbzCyTPwfGy7m9Q509CskE+8KUSZvRvbj/muj5RFqic6FdFbDIXa1L+beJbCFTFDhQ6BdHpPqq/+RoSX3lw0Gi0aVLMGgUXXH5oowMq0oViEj3pCWpj89Ge9E1t9NS8YtktjSOrbxq+9i8jNux97Esv0vdrKUXAD6oKwCFYFcAPPb3z6ZaYAokDCYF320M5hdkHPAF28g+w0/otT60WXODDHWSQXCHA4lNNGTsi4m4/e0d4b94OwmWvX4dlWe6S3uZv79A8H/Khn3pIqOhe/mH5Uu9pXgnnpC/+oZzIcur7CeiOhqd//Fw/RS7GfFKo1gLZgl+dULToCNhxugciJq/0UVZLx2GcSjbjUruYqqFRvrbT0+E7959gOm+MK8359Q=
 
 before_install:
-  - openssl aes-256-cbc -k "$password" -in secret.json.enc -out secret.json -d
+  - echo $password | gpg --passphrase-fd 0 secret.json.gpg
 script:
 - dotnet restore
 - dotnet build
